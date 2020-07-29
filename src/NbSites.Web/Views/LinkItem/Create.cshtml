@@ -43,11 +43,11 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<script type="text/javascript" id="@this.Path">
+    require(['jquery-validation', 'jquery-validation'], function () {
+        "use strict";
+    });
+</script>

@@ -31,5 +31,13 @@
             var result = new MessageResult() { Message = message, Success = false, Data = data };
             return result;
         }
+
+        public static MessageResult ValidateResult(bool validateSuccess = false, string successMessage = "验证通过", string failMessage = "验证失败")
+        {
+            MessageResult vr = new MessageResult();
+            vr.Message = validateSuccess ? successMessage : failMessage;
+            vr.Success = validateSuccess;
+            return vr;
+        }
     }
 }

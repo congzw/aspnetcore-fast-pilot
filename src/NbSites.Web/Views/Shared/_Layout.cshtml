@@ -1,12 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Demo.Web</title>
+    <link href="~/content/libs/bootstrap/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
+    <script src="~/content/libs/jquery/jquery-2.1.0.js"></script>
+    <script src="~/content/libs/bootstrap/bootstrap.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

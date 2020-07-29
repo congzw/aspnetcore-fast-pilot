@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Common;
 
 namespace NbSites.Web.Libs.Domain
 {
@@ -23,23 +22,5 @@ namespace NbSites.Web.Libs.Domain
         public float Sort { get; set; }
         [Display(Name = "离线")]
         public bool OffLine { get; set; }
-
-        public MessageResult ValidateSelf()
-        {
-            var validateResult = MessageResult.ValidateResult();
-            if (string.IsNullOrWhiteSpace(Title))
-            {
-                validateResult.Message = "名称不能为空";
-                return validateResult;
-            }
-            if (string.IsNullOrWhiteSpace(Href))
-            {
-                validateResult.Message = "链接不能为空";
-                return validateResult;
-            }
-
-            validateResult.Success = true;
-            return validateResult;
-        }
     }
 }

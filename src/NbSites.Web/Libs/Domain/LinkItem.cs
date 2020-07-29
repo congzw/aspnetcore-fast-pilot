@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Common;
 
-namespace NbSites.Web.Areas.NbLinks.Libs.Links
+namespace NbSites.Web.Libs.Domain
 {
     public class LinkItem
     {

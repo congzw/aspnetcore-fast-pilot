@@ -1,61 +1,62 @@
 ﻿using System;
 using System.IO;
 using Common.AppContexts;
-using Common.Modules;
-using Common.Modules.Extensions;
+using Demo.Web.Libs.Data;
+using Demo.Web.Libs.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using NbSites.Web.Apis;
-using NbSites.Web.Libs.Boots;
-using NbSites.Web.Libs.Data;
 
-namespace NbSites.Web
+namespace Demo.Web
 {
     public class Startup
     {
-        private readonly ILogger<Startup> _logger;
-
-        public Startup(IConfiguration configuration, IHostingEnvironment environment, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration)
         {
-            _logger = logger;
             Configuration = configuration;
-            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
-            services.AddSingleton<TestAppService>();
 
-            var mvcBuilder = services.AddMvc();
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
-            //"more then one DbContext named 'xxx' was found => move this code to startup.cs to hack it
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+            services.AddScoped<ISeedAppService, SeedAppService>();
             services.AddDbContext<LinksDbContext>(options =>
             {
-                string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LinksDbContext.sqlite");
+                string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LinksDbContext.db");
                 //string connectionString = string.Format("Data Source={0};Version=3;Pooling=True;Max Pool Size=100;", dbFilePath);
                 string connectionString = string.Format("Data Source={0}", dbFilePath);
                 options.UseSqlite(connectionString);
             });
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (Environment.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
-            app.UseMyStaticFiles(Environment, _logger);
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
@@ -63,15 +64,15 @@ namespace NbSites.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
+            
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                var linksDbContext = scope.ServiceProvider.GetRequiredService<LinksDbContext>();
-                linksDbContext.Database.EnsureCreated();
+                var seedAppService = scope.ServiceProvider.GetRequiredService<ISeedAppService>();
+                seedAppService.ResetDb(new ResetDbArgs());
             }
 
             var myAppContext = MyAppContext.Current;
-            myAppContext.Items["EntryUri"] = "~/Links/LinkItem/Index";
+            myAppContext.Items["EntryUri"] = "~/LinkItem/Index";
         }
     }
 }

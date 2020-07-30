@@ -1,4 +1,4 @@
-﻿namespace NbSites.Modules.Users
+﻿namespace NbSites.BaseLib.Users
 {
     public class User
     {

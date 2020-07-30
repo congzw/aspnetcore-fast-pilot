@@ -1,4 +1,4 @@
-﻿namespace NbSites.Modules.Auths
+﻿namespace NbSites.BaseLib.Auths
 {
     public class Account
     {

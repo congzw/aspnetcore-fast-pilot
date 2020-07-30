@@ -1,6 +1,6 @@
 ﻿using Common;
 
-namespace NbSites.Modules.Seeds.AppServices
+namespace NbSites.BaseLib.Seeds.AppServices
 {
     public interface ISeedAppService
     {

@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NbSites.Web.Libs.Data;
-using NbSites.Web.Libs.Domain;
+using NbSites.Infrastructure;
+using NbSites.Modules.Demos;
 
 namespace NbSites.Web.Controllers
 {

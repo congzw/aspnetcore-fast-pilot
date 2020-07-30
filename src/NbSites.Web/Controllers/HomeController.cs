@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using NbSites.Web.Libs.ViewModel;
+using NbSites.Web.ViewModel;
 
 namespace NbSites.Web.Controllers
 {

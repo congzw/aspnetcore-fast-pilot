@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Web.Layouts
+﻿namespace Common.Web.Layouts
 {
     public class LayoutContext
     {

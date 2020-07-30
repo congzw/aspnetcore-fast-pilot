@@ -1,4 +1,4 @@
-namespace NbSites.Web.Libs.ViewModel
+namespace NbSites.Web.ViewModel
 {
     public class ErrorViewModel
     {

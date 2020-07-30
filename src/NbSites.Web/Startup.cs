@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NbSites.Web.Libs.AppServices;
-using NbSites.Web.Libs.Data;
+using NbSites.Infrastructure;
+using NbSites.Modules.Seeds.AppServices;
 
 namespace NbSites.Web
 {

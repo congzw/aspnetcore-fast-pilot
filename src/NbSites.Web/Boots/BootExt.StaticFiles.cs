@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 
-namespace NbSites.Web.Libs.Boots
+namespace NbSites.Web.Boots
 {
     public static partial class BootExt
     {
@@ -26,8 +26,8 @@ namespace NbSites.Web.Libs.Boots
             foreach (var publicFile in publicFiles)
             {
                 //=> "~/Areas/Common/whatever/scripts/test.js"
-                //webPath => D:\any_folder\src\MyApp.Web
-                //publicFolder => D:\any_folder\src\MyApp.Web\Areas\Common\whatever\scripts
+                //webPath => X:\any_folder\src\MyApp.Web
+                //publicFolder => X:\any_folder\src\MyApp.Web\Areas\Common\whatever\scripts
                 //requestPath => \Areas\Common\whatever\scripts
 
                 var publicFolder = Path.GetDirectoryName(publicFile);

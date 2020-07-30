@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace NbSites.Web.Libs.Domain
+namespace NbSites.Modules.Demos
 {
     public class LinkItem
     {

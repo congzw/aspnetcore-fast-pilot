@@ -1,7 +1,7 @@
 ﻿using Common;
-using NbSites.Web.Libs.Data;
+using NbSites.Infrastructure;
 
-namespace NbSites.Web.Libs.AppServices
+namespace NbSites.Modules.Seeds.AppServices
 {
     public class SeedAppService : ISeedAppService
     {

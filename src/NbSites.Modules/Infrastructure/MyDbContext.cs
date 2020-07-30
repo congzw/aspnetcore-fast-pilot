@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NbSites.Web.Libs.Domain;
+using NbSites.Modules.Demos;
 
-namespace NbSites.Web.Libs.Data
+namespace NbSites.Infrastructure
 {
     public class MyDbContext : DbContext
     {

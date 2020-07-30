@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\NbSites.Modules\NbSites.Modules.csproj" />
+    <ProjectReference Include="..\NbSites.AllInOne\NbSites.AllInOne.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,16 +11,11 @@
     <script src="../../content/libs/vue/vue.js"></script>
     <script src="../../content/libs/vue/httpVueLoader.js"></script>
     <script type="text/javascript">
-        //httpVueLoader.register(Vue, 'my-component.vue');
-        //var myApp = new Vue({
-        //    el: '#my-app',
-        //    components: ["my-component"]
-        //});
-
-        new Vue({
+        var myApp = new Vue({
             el: '#my-app',
             components: {
-                'my-component': httpVueLoader('my-component.vue')
+                'my-component': httpVueLoader('my-component.vue'),
+                'my-component2': httpVueLoader('my-component2.vue')
             }
         });
     </script>

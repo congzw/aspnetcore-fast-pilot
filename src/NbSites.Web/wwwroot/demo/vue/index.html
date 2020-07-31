@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+</head>
+<body>
+    <div id="my-app">
+        <my-component></my-component>
+    </div>
+
+    <script src="../../content/libs/vue/vue.js"></script>
+    <script src="../../content/libs/vue/httpVueLoader.js"></script>
+    <script type="text/javascript">
+        //httpVueLoader.register(Vue, 'my-component.vue');
+        //var myApp = new Vue({
+        //    el: '#my-app',
+        //    components: ["my-component"]
+        //});
+
+        new Vue({
+            el: '#my-app',
+            components: {
+                'my-component': httpVueLoader('my-component.vue')
+            }
+        });
+    </script>
+</body>
+</html>

@@ -8,15 +8,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NbSites.BaseLib.Seeds.AppServices;
 using NbSites.Infrastructure;
+using NbSites.Web.Boots;
 
 namespace NbSites.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILogger<Startup> _logger;
+
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
+            _logger = logger;
             Configuration = configuration;
         }
 
@@ -55,8 +60,7 @@ namespace NbSites.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseMyStaticFiles(env, _logger);
 
             app.UseMvc(routes =>
             {

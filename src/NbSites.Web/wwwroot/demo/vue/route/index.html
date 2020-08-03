@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Router Pass Params As Props</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/content/libs/vue/vue.js"></script>
+    <script src="/content/libs/vue/httpVueLoader.js"></script>
+    <script src="/content/libs/vue/vue-router.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Passing Route Parameters to Component Props</h1>
+
+    <p>Using the User component on a route change:</p>
+    <nav class="mainNav">
+      <!-- use router-link component for navigation. -->
+      <!-- specify the link by passing an object to the `to` prop. -->
+      <router-link :to="{ name: 'userList'}">User List</router-link>
+      <router-link :to="{ name: 'user', params: { userId: 123 } }">User 123</router-link>
+      <router-link :to="{ name: 'user', params: { userId: 456, userData: { age: 39, name: 'Patrick'} } }">User 456</router-link>
+      <router-link :to="{ name: 'named'}">Named Views Demo</router-link>
+    </nav>
+
+    <section class="mainBody">
+      <router-view></router-view>
+    </section>
+  </div>
+
+  <script  src="js/index.js"></script>
+</body>
+</html>
